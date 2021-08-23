@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../common.min.css">
+    <link rel="stylesheet" href="style.min.css">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <meta name="description"
+        content="This is the user's profile page, where he can change his password, set a profile photo, change data about himself.">
+    <title>My profile</title>
+</head>
+
+<body>
+    <header class="header container">
+    <nav class="header__nav" aria-label="Main menu">
+        <ul class="header__list">
+            <li class="header__items"><a class="header__item " href="/">Home</a></li>
+            <li class="header__items"><a class="header__item " href="../../pages/blog/">My blog</a></li>
+            <li class="header__items hidden nav-login_js"><a class="header__item header__active-link" href="../../pages/profile/">My profile</a></li>
+            <li class="header__items nav-no-login_js"><button class="header__item header__sign-in-btn sign-in-btn_js" type="button">Sign in</button></li>
+            <li class="header__items nav-no-login_js"><button class="header__item header__register-btn register-btn_js" type="button">Register</button></li>
+        </ul>
+    </nav>
+
+    <button type="button" class="mobile-menu-open-btn mobile-menu-btn_js"><span class="mobile-menu-btn-content"></span></button>
+    <div class="mobile-menu-wrapper mobile-menu-hidden mobile-menu-wrapper_js"></div>
+    <div class="mobile-menu mobile-menu-hidden mobile-menu_js">
+        <button type="button" class="mobile-menu__close-btn mobile-menu-close_js">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3.37256" width="32" height="4" rx="2" transform="rotate(45 3.37256 0)" fill="#070707"/>
+                <rect x="0.543945" y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0.543945 22.6289)" fill="#070707"/>
+            </svg>
+        </button>
+        <ul class="mobile-menu__list">
+            <li class="mobile-menu__items"><a class="mobile-menu__item " href="/">Home</a></li>
+            <li class="mobile-menu__items"><a class="mobile-menu__item " href="../../pages/blog/">My blog</a></li>
+            <li class="mobile-menu__items hidden nav-login_js"><a class="mobile-menu__item header__active-link" href="../../pages/profile/">My profile</a></li>
+            <li class="mobile-menu__items nav-no-login_js"><button class="mobile-menu__item sign-in-moble-btn_js" type="button">Sign in</button></li>
+            <li class="mobile-menu__items nav-no-login_js"><button class="mobile-menu__item register-moble-btn_js" type="button">Register</button></li>
+        </ul>
+    </div>
+</header>
+
+    <main class="container">
+        <h1 class="page__title">My profile</h1>
+        <section class="profile profile_js">
+            <h2 class="visually-hidden">Profile data</h2>
+            <div class="profile__image-container">
+                <img class="profile__image profile-image_js" src="../../static/images/no-photo.jpg" alt="Profile foto">
+            </div>
+            <div class="profile__content">
+                <ul class="profile__data">
+                    <li class="profile__item">
+                        <strong class="profile__user-name-title">Name:</strong>
+                        <span class="profile__user-name profile-name_js"></span>
+                    </li>
+                    <li class="profile__item">
+                        <strong class="profile__user-surname-title">Surname:</strong>
+                        <span class="profile__user-surname profile-sname_js"></span>
+                    </li>
+                    <li class="profile__item">
+                        <strong class="profile__user-email-title">Email:</strong>
+                        <span class="profile__user-email profile-email_js"></span>
+                    </li>
+                    <li class="profile__item">
+                        <strong class="profile__user-password-title">Password:</strong>
+                        <span class="profile__user-password">**********</span>
+                    </li>
+                    <li class="profile__item">
+                        <strong class="profile__user-location-title">Location:</strong>
+                        <span class="profile__user-location profile-location_js"></span>
+                    </li>
+                    <li class="profile__item">
+                        <strong class="profile__user-age-title">Age:</strong>
+                        <span class="profile__user-age profile-age_js"></span>
+                    </li>
+                </ul>
+                <button class="profile__change-password-btn change-password-btn_js button" type="button" id="change-password-btn" >Change password</button>
+                <button class="profile__change-data-btn change-data-btn_js button" type="button" id="change-data-btn" >Change other data</button>
+                <button class="profile__delete-account-btn delete-user-btn_js button" type="button" id="delete-account-btn" >Delete account</button>
+            </div>
+        </section>
+    </main>
+    <div class="modal-overlay hidden modal-overlay_js"></div>
+    <div class="edit-password-modal hidden edit-password-modal_js">
+    <h2 class="visually-hidden">Edit password Window</h2>
+    <form action="#" class="edit-password-modal__form" method="POST" name="editPasswordForm">
+        <fieldset class="edit-password-modal__wrapper">
+            <label class="edit-password-modal__old-password" for="edit-password-old-password">Old password <sup>*</sup></label>
+            <input type="password" id="edit-password-old-password" name="oldPassword" placeholder="**********">
+        </fieldset>
+        <fieldset class="edit-password-modal__wrapper">
+            <label class="edit-password-modal__new-password" for="edit-password-new-password">New password <sup>*</sup></label>
+            <input type="password" id="edit-password-new-password" name="newPassword" placeholder="****************">
+        </fieldset>
+        <fieldset class="edit-password-modal__wrapper">
+            <label class="edit-password-modal__repeat-new-password" for="edit-password-repeat-new-password">Repeat new password <sup>*</sup></label>
+            <input type="password" id="edit-password-repeat-new-password" name="repeatNewPassword" placeholder="****************">
+        </fieldset>
+        <button class="edit-password-modal__submit-btn edit-password-btn_js button" type="submit" id="edit-password-modal__submit-btn" >Change password</button>
+    </form>
+    <button class="edit-password-modal__btn_close modal-btn-close_js" type="button" aria-label="edit password modal close">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill=""/>
+            <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+        </svg>
+    </button>
+    <div class="spinner-wrapper hidden spinner_js @@class">
+    <div class="hexdots-loader">
+    </div>
+</div>
+</div>
+    <div class="edit-data-modal hidden edit-data-modal_js">
+    <h2 class="visually-hidden">Editing data Window</h2>
+    <form action="#" class="edit-data-modal__form" method="POST" name="editDataForm">
+        <fieldset class="edit-data-modal__wrapper-email">
+            <label class="edit-data-modal__email" for="edit-data-email">Email</label>
+            <input type="text" id="edit-data-email" name="email" >
+        </fieldset>
+        <fieldset class="edit-data-modal__wrapper">
+            <div class="edit-data-modal__block">
+                <label class="edit-data-modal__name" for="edit-data-name">Name</label>
+                <input type="text" id="edit-data-name" name="name" >
+            </div>
+            <div class="edit-data-modal__block">
+                <label class="edit-data-modal__sname" for="edit-data-sname">Surname</label>
+                <input type="text" id="edit-data-sname" name="surname" >
+            </div>
+            <div class="edit-data-modal__block">
+                <label class="edit-data-modal__location" for="edit-data-location">Location</label>
+                <input type="text" id="edit-data-location" name="location" >
+            </div>
+            <div class="edit-data-modal__block">
+                <label class="edit-data-modal__age" for="edit-data-age">Age</label>
+                <input type="number" id="edit-data-age" name="age" >
+            </div>
+            <div class="edit-data-modal__block">
+                <label class="edit-data-modal__file" for="edit-data-file">Profile picture</label>
+                <label class="edit-data-modal__fake-input fakeFile-input_js" for="edit-data-file">file-name.png</label>
+                <input class="edit-data-modal__input-hidden" type="file" id="edit-data-file" accept=".jpg,.jpeg,.png,.webp" name="avatar">
+            </div>
+        </fieldset>
+        <button class="edit-data-modal__submit-btn edit-data-btn_js button" type="submit" id="edit-data-modal__submit-btn" >Submit changes</button>
+    </form>
+    <button class="edit-data-modal__btn_close modal-btn-close_js" type="button" aria-label="edit data window close">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill=""/>
+        <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+        </svg>
+    </button>
+    <div class="spinner-wrapper hidden spinner_js @@class">
+    <div class="hexdots-loader">
+    </div>
+</div>
+</div>
+    <div class="sing-in-modal hidden sing-in-modal_js">
+    <h2 class="visually-hidden">Sing in Window</h2>
+    <form action="#" class="sing-in-modal__form" name="signInform" method="POST">
+        <fieldset class="sing-in-modal__wrapper">
+            <label class="sing-in-modal__email" for="sing-in-email">Email <sup>*</sup></label>
+            <input type="text" id="sing-in-email" name="email">
+        </fieldset>
+        <fieldset class="sing-in-modal__wrapper">
+            <label class="sing-in-modal__password" for="sing-in-password">Password <sup>*</sup></label>
+            <input type="password" id="sing-in-password" name="password">
+        </fieldset>
+        <button class="sing-in-modal__submit-btn sing-in-btn_js button" type="submit" id="sing-in-modal__submit-btn" >Log in</button>
+    </form>
+    <button class="sing-in-modal__btn_close modal-btn-close_js" type="button" aria-label="sing in close">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill=""/>
+        <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+        </svg>
+    </button>
+    <div class="spinner-wrapper hidden spinner_js @@class">
+    <div class="hexdots-loader">
+    </div>
+</div>
+</div>
+    <div class="sing-up-modal hidden sing-up-modal_js">
+    <h2 class="visually-hidden">Sing up Window</h2>
+    <form action="#" class="sing-up-modal__form" method="POST" name="registerForm">
+        <fieldset class="sing-up-modal__wrapper-email">
+            <label class="sing-up-modal__email" for="sing-up-email">Email <sup>*</sup></label>
+            <input type="text" id="sing-up-email" name="email">
+        </fieldset>
+        <fieldset class="sing-up-modal__wrapper">
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__name" for="sing-up-name">Name <sup>*</sup></label>
+                <input type="text" id="sing-up-name" name="name">
+            </div>
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__sname" for="sing-up-sname">Surname <sup>*</sup></label>
+                <input type="text" id="sing-up-sname" name="sname">
+            </div>
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__password" for="sing-up-password">Password <sup>*</sup></label>
+                <input type="password" id="sing-up-password" name="password">
+            </div>
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__repeat-password" for="sing-up-repeat-password">Repeat password <sup>*</sup></label>
+                <input type="password" id="sing-up-repeat-password" name="repeatPassword">
+            </div>
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__location" for="sing-up-location">Location <sup>*</sup></label>
+                <input type="text" id="sing-up-location" name="location">
+            </div>
+            <div class="sing-up-modal__block">
+                <label class="sing-up-modal__age" for="sing-up-age">Age <sup>*</sup></label>
+                <input type="number" id="sing-up-age" name="age">
+            </div>
+        </fieldset>
+        <fieldset class="sing-up-modal__wrapper-agreement">
+            <input type="checkbox" name="agreement" id="agreement">
+            <label for="agreement">Clicking on the button, you consent to the processing of your personal data.</label>
+        </fieldset>
+        <button class="sing-up-modal__submit-btn sing-up-btn_js button" type="submit" id="sing-up-modal__submit-btn" disabled>Sign up</button>
+    </form>
+    <button class="sing-up-modal__btn_close modal-btn-close_js" type="button" aria-label="sing up close">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill=""/>
+        <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+        </svg>
+    </button>
+    <div class="spinner-wrapper hidden spinner_js @@class">
+    <div class="hexdots-loader">
+    </div>
+</div>
+</div>
+    <div class="send-form__wrapper-success wrapper-success_js hidden">
+    <div class="send-form__message-success send-form-success_js">Form has been sent successfully</div>
+    <button type="button" class="send-form__btn_close-success close-success-btn_js"><svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.82812" width="32" height="4" rx="2" transform="rotate(45 2.82812 0)" fill=""/>
+        <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+    </svg>
+    </button>
+</div>
+<div class="send-form__wrapper-error wrapper-error_js hidden">
+    <div class="send-form__message-error send-form-eror_js">The form was sent but the server transmits an error: “The form was sent but the server transmits an error”</div>
+    <button type="button" class="send-form__btn_close-error close-error-btn_js"><svg width="26" height="26" viewBox="0 0 26 26" fill="#828282" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.82812" width="32" height="4" rx="2" transform="rotate(45 2.82812 0)" fill=""/>
+        <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill=""/>
+    </svg>
+    </button>
+</div>
+    <div class="spinner-wrapper hidden spinner_js profile-spinner_js">
+    <div class="hexdots-loader">
+    </div>
+</div>
+    
+    <script  src="../../script.js"></script>
+    <script  src="script-profile.js"></script>
+    
+</body>
+
+</html>
