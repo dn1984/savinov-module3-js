@@ -11,7 +11,6 @@
   var btnDeleteAccount = document.querySelector('.delete-user-btn_js');
   if (!profileContainer || !spinner || !editPasswordForm || !editDataForm || !editDataModal || !editPasswordModal) {
     return;
-    console.log('return;');
   } 
   var profileImage = profileContainer.querySelector('.profile-image_js');
   var profileName = profileContainer.querySelector('.profile-name_js');
@@ -20,13 +19,10 @@
   var profileLocation = profileContainer.querySelector('.profile-location_js');
   var profileAge = profileContainer.querySelector('.profile-age_js');
   var profile = null;
-  document.addEventListener('DOMContentLoaded', function(){
-
-    getUserProfile();
-    profileModalOpen();
-    validateEditProfile();
-
-}, false);
+  
+  getUserProfile();
+  profileModalOpen();
+  validateEditProfile();
   
   btnDeleteAccount.addEventListener('click', deleteAccount);
   window.addEventListener('keydown', function (event) {
