@@ -17,9 +17,14 @@
   var profileLocation = profileContainer.querySelector('.profile-location_js');
   var profileAge = profileContainer.querySelector('.profile-age_js');
   var profile = null;
-  getUserProfile();
-  profileModalOpen();
-  validateEditProfile();
+  document.addEventListener('DOMContentLoaded', function(){
+
+    getUserProfile();
+    profileModalOpen();
+    validateEditProfile();
+
+}, false);
+  
   btnDeleteAccount.addEventListener('click', deleteAccount);
   window.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
