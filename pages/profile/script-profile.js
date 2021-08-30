@@ -9,7 +9,10 @@
   var editPasswordForm = document.forms.editPasswordForm;
   var editDataForm = document.forms.editDataForm;
   var btnDeleteAccount = document.querySelector('.delete-user-btn_js');
-  if (!profileContainer || !spinner || !editPasswordForm || !editDataForm || !editDataModal || !editPasswordModal) return;
+  if (!profileContainer || !spinner || !editPasswordForm || !editDataForm || !editDataModal || !editPasswordModal) {
+    return;
+    console.log('return;');
+  } 
   var profileImage = profileContainer.querySelector('.profile-image_js');
   var profileName = profileContainer.querySelector('.profile-name_js');
   var profileSname = profileContainer.querySelector('.profile-sname_js');
